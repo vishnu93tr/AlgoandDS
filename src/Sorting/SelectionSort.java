@@ -9,7 +9,7 @@ public class SelectionSort
         for(int lastunsortedIndex=array.length-1;lastunsortedIndex>0;lastunsortedIndex--)
         {
             int largest=0;
-            for(int i=0;i<=lastunsortedIndex;i++)
+            for(int i=1;i<=lastunsortedIndex;i++)
             {
                 if(array[i]>array[largest])
                 {
