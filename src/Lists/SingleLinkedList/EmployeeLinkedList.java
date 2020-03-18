@@ -1,4 +1,4 @@
-package Lists;
+package Lists.SingleLinkedList;
 
 public class EmployeeLinkedList
 {

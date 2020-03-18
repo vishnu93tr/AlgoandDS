@@ -1,4 +1,4 @@
-package Lists;
+package Lists.DoubleLinkedList;
 
 public class Main
 {
@@ -9,7 +9,7 @@ public class Main
         Employee root=new Employee("joe","root",3);
         Employee kane=new Employee("kane","williamson",4);
 
-        EmployeeLinkedList employeeLinkedList=new EmployeeLinkedList();
+        EmployeeDoublyLinkedList employeeLinkedList=new EmployeeDoublyLinkedList();
         System.out.println(employeeLinkedList.isEmpty());
         employeeLinkedList.addToFront(virat);
         employeeLinkedList.addToFront(steve);
@@ -18,8 +18,9 @@ public class Main
         System.out.println(employeeLinkedList.getSize());
         employeeLinkedList.printlist();
 
-        employeeLinkedList.removeFromFront();
-        System.out.println(employeeLinkedList.getSize());
+
+
+        employeeLinkedList.removeFromEnd();
         employeeLinkedList.printlist();
     }
 }
