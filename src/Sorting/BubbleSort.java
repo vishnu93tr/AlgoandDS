@@ -20,7 +20,8 @@ public class BubbleSort
     }
     public static  void swap(int[] arr,int i,int j)
     {
-        if(i==j){
+        if(i==j)
+        {
             return;
         }
         int temp=arr[j];

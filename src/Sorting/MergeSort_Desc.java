@@ -10,46 +10,44 @@ public class MergeSort_Desc
             System.out.println(intArray[i]);
         }
     }
-    public static void MergeSort(int[] input,int start,int end)
-    {
+   private static void MergeSort(int[] input,int start,int end)
+   {
         //breaking condition for recursion
-        if(end-start<2)
-            return;
+       if(end-start<2)
+           return;
 
-        int mid=(start+end)/2;
-        //For left array
-        MergeSort(input,start,mid);
-        //For right array
-        MergeSort(input,mid,end);
-        Merge(input,start,mid,end);
-    }
-    public static void Merge(int[] input,int start,int mid,int end)
-    {
+       //calculate mid
+       int mid=(start+end)/2;
+       MergeSort(input,start,mid);
+       MergeSort(input,mid,end);
+
+       //Merge method for merging-please note that we merge only sorted arrays
+       Merge(input,start,mid,end);
+   }
+   private static void Merge(int[] input,int start,int mid,int end)
+   {
         //optimization1
-        if(input[mid-1]>=input[mid])
-            return;
+       if(input[mid-1]>=input[mid])
+           return;
 
-        //create a temporary array for merging
-        //we sort values while merging
+       //create a temparray to store sorted values
+       int[] tmpArray=new int[end-start];
+       //to keep a track of where we are in temporary array
+       int i=start,j=mid;
+       int tmpIndex=0;
+       while (i<mid && j<end)
+       {
+           tmpArray[tmpIndex++]=input[i]>=input[j]?input[i++]:input[j++];
+       }
+       //copy the left over elements in left partition into temparray
+       //we dont require to copy elemnts in right partition because its position is not going to change while merge
 
-        int[] tmpArray=new int[end-start];
+       System.arraycopy(input,i,input,start+tmpIndex,mid-i);
 
-        int tmpIndex=0;
-        int i=start;
-        int j=mid;
+       //copy temporay array back to input array
 
-        //Merging or sorting
+       System.arraycopy(tmpArray,0,input,start,tmpIndex);
 
-        while(i<mid && j<end)
-        {
-            tmpArray[tmpIndex++]=input[i]>=input[j]?input[i++]:input[j++];
-        }
-        //shift input array to start+tmpIndexitems
 
-        System.arraycopy(input,start,input,start+tmpIndex,mid-i);
-
-        //copy tmp array back to input array
-
-        System.arraycopy(tmpArray,0,input,start,tmpIndex);
-    }
+   }
 }
