@@ -5,16 +5,21 @@ public class EmployeeDoublyLinkedList
     private EmployeeNode head;
     private EmployeeNode tail;
     private int size;
+
+    public int getSize()
+    {
+        return size;
+    }
     public void addToFront(Employee employee)
     {
         EmployeeNode employeeNode=new EmployeeNode(employee);
-        employeeNode.setNext(head);
-        //condition for empty doubly linked list
-        if(head==null){
+        if(head==null)
+        {
             tail=employeeNode;
         }
         else{
             head.setPrevious(employeeNode);
+            employeeNode.setNext(head);
         }
         head=employeeNode;
         size++;
@@ -26,33 +31,44 @@ public class EmployeeDoublyLinkedList
         {
             head=employeeNode;
         }
-        else
-        {
+        else{
             tail.setNext(employeeNode);
             employeeNode.setPrevious(tail);
         }
         tail=employeeNode;
         size++;
     }
-    public boolean isEmpty()
+    public boolean addBefore(Employee newEmployee,Employee existingEmployee)
     {
-        return head==null;
+        if(head==null){
+            return false;
+        }
+        EmployeeNode current=head;
+        if(current!=null && !current.getEmployee().equals(existingEmployee))
+        {
+            current=current.getNext();
+        }
+        if(current.equals(head))
+        {
+            addToFront(newEmployee);
+        }
+        else {
+            EmployeeNode newEmp = new EmployeeNode(newEmployee);
+            newEmp.setPrevious(current.getPrevious());
+            newEmp.setNext(current);
+            newEmp.getPrevious().setNext(newEmp);
+            current.setPrevious(newEmp);
+        }
+        return true;
     }
-    public int getSize()
-    {
-        return size;
-    }
-
     public EmployeeNode removeFromFront()
     {
-        if(isEmpty())
+        EmployeeNode removedNode=head;
+        if(head==null)
         {
             return null;
         }
-        EmployeeNode removedNode=head;
-        //john previous field becomes janes previous
-        if(head.getNext()==null)
-        {
+        if(head.getNext()==null){
             tail=null;
         }
         else {
@@ -62,27 +78,24 @@ public class EmployeeDoublyLinkedList
         size--;
         return removedNode;
     }
-    //john,jane
-    //jane
     public EmployeeNode removeFromEnd()
     {
-        if(isEmpty()){
+        EmployeeNode removedNode=tail;
+        if(tail==null)
+        {
             return null;
         }
-        EmployeeNode removedNode=tail;
-        if(tail.getPrevious()==null)
-        {
+        if(tail.getPrevious()==null){
             head=null;
         }
-        else
-            {
+        else{
             tail.getPrevious().setNext(null);
         }
         tail=tail.getPrevious();
         size--;
         return removedNode;
     }
-    public void printlist()
+    public void printList()
     {
         EmployeeNode current=head;
         System.out.print("HEAD->");
@@ -91,9 +104,7 @@ public class EmployeeDoublyLinkedList
             System.out.print(current);
             System.out.print("<->");
             current=current.getNext();
-
         }
         System.out.println("null");
-
     }
 }
