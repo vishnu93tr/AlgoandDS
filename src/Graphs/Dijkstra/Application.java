@@ -14,7 +14,7 @@ public class Application
 
         Dijkstra dijkstra=new Dijkstra();
 
-        dijkstra.computePaths(vertex0);
+        dijkstra.ComputePath(vertex0);
 
         System.out.println(dijkstra.getShortestPath(vertex2));
     }

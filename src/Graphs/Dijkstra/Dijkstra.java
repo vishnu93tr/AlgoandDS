@@ -7,42 +7,60 @@ import java.util.PriorityQueue;
 
 public class Dijkstra
 {
-    public void computePaths(Vertex sourceVertex){
-        //set source vertex distance to zero
-        sourceVertex.setDistance(0);
-        PriorityQueue<Vertex> priorityQueue=new PriorityQueue<>();
-        priorityQueue.add(sourceVertex);
+   public void ComputePath(Vertex sourceVertex)
+   {
+       sourceVertex.setDistance(0);
 
-        while (!priorityQueue.isEmpty())
-        {
-            //gets the source queue
-            Vertex actual_vertex=priorityQueue.poll();
+       PriorityQueue<Vertex> priorityQueue=new PriorityQueue<>();
 
-            for(Edge edge:actual_vertex.getAdjacenciesList())
-            {
-                Vertex v=edge.getDestinationvertex();
+       priorityQueue.add(sourceVertex);
 
-                double new_distance=actual_vertex.getDistance()+edge.getWeight();
+       while(!priorityQueue.isEmpty())
+       {
+           Vertex vertex=priorityQueue.poll();
 
-                if(new_distance<v.getDistance()){
-                    priorityQueue.remove(v);
-                    v.setDistance(new_distance);
-                    v.setPredecessor(actual_vertex);
-                    priorityQueue.add(v);
-                }
-            }
-        }
-    }
-    public List<Vertex> getShortestPath(Vertex destinationVertex)
-    {
-        List<Vertex> shortestpathtotarget=new ArrayList<>();
+           //get neighbours of source
 
-        for(Vertex vertex=destinationVertex;vertex!=null;vertex=vertex.getPredecessor())
-        {
-            shortestpathtotarget.add(vertex);
-        }
-        Collections.sort(shortestpathtotarget);
+           for(Edge edge:vertex.getAdjacenciesList())
+           {
+               //get target vertex
+               Vertex v=edge.getDestinationvertex();
 
-        return shortestpathtotarget;
-    }
+               //calculate new weights
+               double new_distance=vertex.getDistance()+edge.getWeight();
+
+               //compare new weight with already existing weight
+
+               if(new_distance<v.getDistance()){
+                   //remove old vertex from priority queue
+                   priorityQueue.remove(v);
+                   //update new distance
+                   v.setDistance(new_distance);
+                   //update predecessor
+                   v.setPredecessor(vertex);
+                   //add same vertex with new weight
+                   priorityQueue.add(v);
+
+               }
+
+           }
+       }
+   }
+
+   public List<Vertex> getShortestPath(Vertex destination_vertex)
+   {
+       //create a new list to return
+       List<Vertex> shortestpathlist=new ArrayList<>();
+
+       //track backwards from destination to source using precedessor
+
+       for(Vertex vertex=destination_vertex;vertex!=null;vertex=vertex.getPredecessor())
+       {
+           shortestpathlist.add(vertex);
+       }
+       //sort list as its is tracked backwards
+       Collections.sort(shortestpathlist);
+
+       return shortestpathlist;
+   }
 }
