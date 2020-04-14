@@ -2,14 +2,32 @@ package Graphs.Dijkstra;
 
 public class Edge
 {
+    //edge should contain source vertex,dest vertex,weight
+    private Vertex sourcevertex;
+    private Vertex destinationvertex;
     private double weight;
-    private Vertex startvertex;
-    private Vertex targetvertex;
 
-    public Edge(double weight,Vertex startvertex,Vertex targetvertex){
-        this.weight=weight;
-        this.startvertex=startvertex;
-        this.targetvertex=targetvertex;
+    public Edge(Vertex sourcevertex, Vertex destinationvertex, double weight)
+    {
+        this.sourcevertex = sourcevertex;
+        this.destinationvertex = destinationvertex;
+        this.weight = weight;
+    }
+
+    public Vertex getSourcevertex() {
+        return sourcevertex;
+    }
+
+    public void setSourcevertex(Vertex sourcevertex) {
+        this.sourcevertex = sourcevertex;
+    }
+
+    public Vertex getDestinationvertex() {
+        return destinationvertex;
+    }
+
+    public void setDestinationvertex(Vertex destinationvertex) {
+        this.destinationvertex = destinationvertex;
     }
 
     public double getWeight() {
@@ -18,21 +36,5 @@ public class Edge
 
     public void setWeight(double weight) {
         this.weight = weight;
-    }
-
-    public Vertex getStartvertex() {
-        return startvertex;
-    }
-
-    public void setStartvertex(Vertex startvertex) {
-        this.startvertex = startvertex;
-    }
-
-    public Vertex getTargetvertex() {
-        return targetvertex;
-    }
-
-    public void setTargetvertex(Vertex targetvertex) {
-        this.targetvertex = targetvertex;
     }
 }

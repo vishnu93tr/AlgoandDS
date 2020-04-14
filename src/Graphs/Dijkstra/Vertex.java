@@ -5,31 +5,15 @@ import java.util.List;
 
 public class Vertex implements Comparable<Vertex>
 {
+    //vertex contains name,list of its neighbours,predecessor,distance to calculate paths,COMPARATOR to compare two distances
     private String name;
-    private boolean visited;
     private List<Edge> adjacenciesList;
-    private Vertex predesessor;
+    private Vertex predecessor;
     private double distance=Double.MAX_VALUE;
+    private boolean visited;
 
-    public Vertex(String name){
-        this.name=name;
-        this.adjacenciesList=new ArrayList<>();
-    }
-    public void addNeighbour(Edge edge){
+    public void addNeighbourList(Edge edge){
         this.adjacenciesList.add(edge);
-    }
-
-    @Override
-    public String toString() {
-        return this.name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public boolean isVisited() {
@@ -40,6 +24,19 @@ public class Vertex implements Comparable<Vertex>
         this.visited = visited;
     }
 
+    public Vertex(String name){
+        this.name=name;
+        this.adjacenciesList=new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public List<Edge> getAdjacenciesList() {
         return adjacenciesList;
     }
@@ -48,12 +45,12 @@ public class Vertex implements Comparable<Vertex>
         this.adjacenciesList = adjacenciesList;
     }
 
-    public Vertex getPredesessor() {
-        return predesessor;
+    public Vertex getPredecessor() {
+        return predecessor;
     }
 
-    public void setPredesessor(Vertex predesessor) {
-        this.predesessor = predesessor;
+    public void setPredecessor(Vertex predecessor) {
+        this.predecessor = predecessor;
     }
 
     public double getDistance() {
@@ -65,8 +62,12 @@ public class Vertex implements Comparable<Vertex>
     }
 
     @Override
-    public int compareTo(Vertex otherVertex)
-    {
+    public int compareTo(Vertex otherVertex) {
         return Double.compare(distance,otherVertex.getDistance());
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

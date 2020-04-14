@@ -1,6 +1,6 @@
 package Graphs.Dijkstra;
 
-public class App
+public class Application
 {
     public static void main(String[] args)
     {
@@ -8,10 +8,9 @@ public class App
         Vertex vertex1=new Vertex("B");
         Vertex vertex2=new Vertex("C");
 
-        vertex0.addNeighbour(new Edge(1,vertex0,vertex1));
-        vertex0.addNeighbour(new Edge(3,vertex0,vertex2));
-        vertex1.addNeighbour(new Edge(1,vertex1,vertex2));
-
+        vertex0.addNeighbourList(new Edge(vertex0,vertex1,1));
+        vertex0.addNeighbourList(new Edge(vertex0,vertex2,3));
+        vertex1.addNeighbourList(new Edge(vertex1,vertex2,1));
 
         Dijkstra dijkstra=new Dijkstra();
 

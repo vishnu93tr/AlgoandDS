@@ -20,16 +20,16 @@ public class Dijkstra
 
             for(Edge edge:actual_vertex.getAdjacenciesList())
             {
-                 Vertex v=edge.getTargetvertex();
+                Vertex v=edge.getDestinationvertex();
 
-                 double new_distance=actual_vertex.getDistance()+edge.getWeight();
+                double new_distance=actual_vertex.getDistance()+edge.getWeight();
 
-                 if(new_distance<v.getDistance()){
-                     priorityQueue.remove(v);
-                     v.setDistance(new_distance);
-                     v.setPredesessor(actual_vertex);
-                     priorityQueue.add(v);
-                 }
+                if(new_distance<v.getDistance()){
+                    priorityQueue.remove(v);
+                    v.setDistance(new_distance);
+                    v.setPredecessor(actual_vertex);
+                    priorityQueue.add(v);
+                }
             }
         }
     }
@@ -37,7 +37,7 @@ public class Dijkstra
     {
         List<Vertex> shortestpathtotarget=new ArrayList<>();
 
-        for(Vertex vertex=destinationVertex;vertex!=null;vertex=vertex.getPredesessor())
+        for(Vertex vertex=destinationVertex;vertex!=null;vertex=vertex.getPredecessor())
         {
             shortestpathtotarget.add(vertex);
         }
