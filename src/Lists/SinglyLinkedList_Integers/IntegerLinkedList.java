@@ -27,23 +27,20 @@ public class IntegerLinkedList {
 
     //1,2,3,5,8
     //4=value to insert
-    public void insertSorted(Integer value)
-    {
+    public void insertSorted(Integer value) {
         // add your code here
-        if(head==null || head.getValue()>=value)
-        {
+        if (head == null || head.getValue() >= value) {
             addToFront(value);
             return;
         }
         //find the insertion position
-        IntegerNode current=head.getNext();
-        IntegerNode previous=head;
-        while(current!=null && current.getValue()<=value)
-        {
-            previous=current;
-            current=current.getNext();
+        IntegerNode current = head.getNext();
+        IntegerNode previous = head;
+        while (current != null && current.getValue() <= value) {
+            previous = current;
+            current = current.getNext();
         }
-        IntegerNode newNode=new IntegerNode(value);
+        IntegerNode newNode = new IntegerNode(value);
         newNode.setNext(current);
         previous.setNext(newNode);
         size++;

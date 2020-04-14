@@ -1,5 +1,9 @@
 package Trees;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 public class TreeNode
 {
     private int data;
@@ -76,6 +80,7 @@ public class TreeNode
             rightChild.traverseInOrder();
         }
     }
+
     public void traversePreOrder()
     {
         System.out.print("Data ="+data+", ");
@@ -86,6 +91,7 @@ public class TreeNode
             rightChild.traversePreOrder();
         }
     }
+
     public void traversePostOrder()
     {
         if(leftChild!=null){
@@ -96,6 +102,7 @@ public class TreeNode
         }
         System.out.print("Data ="+data+", ");
     }
+
     public TreeNode get(int value)
     {
         if(value==data){
@@ -129,4 +136,20 @@ public class TreeNode
             return rightChild.max();
         }
    }
+   public int height(TreeNode node)
+   {
+       if(node==null){
+           return 0;
+       }
+        int ldepth=height(leftChild);
+        int rdepth=height(rightChild);
+
+        if(ldepth>rdepth){
+            return ldepth+1;
+        }
+        else{
+            return rdepth+1;
+        }
+   }
+
 }

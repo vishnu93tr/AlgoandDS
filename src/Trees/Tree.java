@@ -82,5 +82,12 @@ public class Tree
             root.traversePostOrder();
         }
     }
+    public int height(){
+        if(root!=null){
+           return root.height(root);
+        }
+        return 0;
+    }
+
 
 }
