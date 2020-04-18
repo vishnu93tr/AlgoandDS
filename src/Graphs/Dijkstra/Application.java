@@ -1,5 +1,7 @@
 package Graphs.Dijkstra;
 
+import com.sun.xml.internal.ws.api.model.wsdl.editable.EditableWSDLService;
+
 public class Application
 {
     public static void main(String[] args)
@@ -14,8 +16,8 @@ public class Application
 
         Dijkstra dijkstra=new Dijkstra();
 
-        dijkstra.ComputePath(vertex0);
+        System.out.println(dijkstra.ComputePath(vertex0,vertex2));
 
-        System.out.println(dijkstra.getShortestPath(vertex2));
+
     }
 }

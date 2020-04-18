@@ -14,12 +14,8 @@ public class Vertex
         this.name=name;
         this.adjacencies=new ArrayList<>();
     }
-    public void addNeighbour(Edge edge){
+    public void addEdge(Edge edge){
         this.adjacencies.add(edge);
-    }
-    @Override
-    public String toString() {
-        return this.name;
     }
 
     public String getName() {
@@ -52,5 +48,9 @@ public class Vertex
 
     public void setPredecessor(Vertex predecessor) {
         this.predecessor = predecessor;
+    }
+    @Override
+    public String toString(){
+        return this.name;
     }
 }

@@ -1,13 +1,10 @@
 package Graphs.Dijkstra;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Dijkstra
 {
-   public void ComputePath(Vertex sourceVertex)
+   public List<Vertex> ComputePath(Vertex sourceVertex,Vertex destination_vertex)
    {
        sourceVertex.setDistance(0);
 
@@ -17,39 +14,33 @@ public class Dijkstra
 
        while(!priorityQueue.isEmpty())
        {
-           Vertex vertex=priorityQueue.poll();
+           Vertex u=priorityQueue.poll();
 
            //get neighbours of source
 
-           for(Edge edge:vertex.getAdjacenciesList())
+           for(Edge edge:u.getAdjacenciesList())
            {
                //get target vertex
                Vertex v=edge.getDestinationvertex();
 
                //calculate new weights
-               double new_distance=vertex.getDistance()+edge.getWeight();
+               double new_distance=u.getDistance()+edge.getWeight();
 
                //compare new weight with already existing weight
 
                if(new_distance<v.getDistance()){
-                   //remove old vertex from priority queue
-                   priorityQueue.remove(v);
+
                    //update new distance
                    v.setDistance(new_distance);
                    //update predecessor
-                   v.setPredecessor(vertex);
-                   //add same vertex with new weight
+                   v.setPredecessor(u);
+                   //add vertex to priority queue
                    priorityQueue.add(v);
 
                }
 
            }
        }
-   }
-
-   public List<Vertex> getShortestPath(Vertex destination_vertex)
-   {
-       //create a new list to return
        List<Vertex> shortestpathlist=new ArrayList<>();
 
        //track backwards from destination to source using precedessor
@@ -63,4 +54,8 @@ public class Dijkstra
 
        return shortestpathlist;
    }
+
+
+
+
 }

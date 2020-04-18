@@ -42,7 +42,7 @@ public class App
         edgeList.add(new Edge(vertexList.get(4), vertexList.get(2), -1*Math.log(0.650)));
         edgeList.add(new Edge(vertexList.get(4), vertexList.get(3), -1*Math.log(1.049)));
 
-        ArbitradgeDetection bellmannFordAlgorithm = new ArbitradgeDetection(edgeList,vertexList);
+        ArbitradgeDetection bellmannFordAlgorithm = new ArbitradgeDetection(vertexList,edgeList);
         bellmannFordAlgorithm.BellmanFord(vertexList.get(0));
 
         bellmannFordAlgorithm.printCycle();

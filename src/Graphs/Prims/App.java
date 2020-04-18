@@ -17,18 +17,15 @@ public class App
         vertices.add(vertex1);
         vertices.add(vertex2);
 
-        vertex0.addNeighbour(new Edge(vertex0,vertex1,10));
-        vertex0.addNeighbour(new Edge(vertex0,vertex2,1));
-        vertex0.addNeighbour(new Edge(vertex1,vertex2,1));
+        vertex1.addEdge(new Edge(vertex1,vertex0,1));
+        vertex2.addEdge(new Edge(vertex2,vertex0,10));
+        vertex2.addEdge(new Edge(vertex2,vertex1,1));
 
-        vertex1.addNeighbour(new Edge(vertex1,vertex0,10));
-        vertex2.addNeighbour(new Edge(vertex2,vertex0,1));
-        vertex2.addNeighbour(new Edge(vertex2,vertex1,1));
+        Algorithm primsAlgorithm=new Algorithm(vertices);
 
-        PrimsAlgorithm primsAlgorithm=new PrimsAlgorithm(vertices);
+        primsAlgorithm.Algorithm(vertex2);
 
-        primsAlgorithm.PrimsAlgorithm(vertex2);
+        primsAlgorithm.printPath();
 
-        primsAlgorithm.showMST();
     }
 }

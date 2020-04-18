@@ -2,22 +2,23 @@ package Graphs.Prims;
 
 public class Edge implements Comparable<Edge>
 {
+    //we need to implement Comparable interface as we need to get
+    // minedge from heap which uses priority queue as underlying data type
     private double weight;
     private Vertex startVertex;
     private Vertex targetVertex;
 
-    public Edge( Vertex startVertex, Vertex targetVertex,double weight)
-    {
-        this.weight = weight;
-        this.startVertex = startVertex;
-        this.targetVertex = targetVertex;
+    public Edge(Vertex startVertex,Vertex targetVertex,double weight){
+        this.weight=weight;
+        this.startVertex=startVertex;
+        this.targetVertex=targetVertex;
     }
 
     public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -25,17 +26,13 @@ public class Edge implements Comparable<Edge>
         return startVertex;
     }
 
-    public void setStartVertex(Vertex startVertex) {
-        this.startVertex = startVertex;
-    }
+
 
     public Vertex getTargetVertex() {
         return targetVertex;
     }
 
-    public void setTargetVertex(Vertex targetVertex) {
-        this.targetVertex = targetVertex;
-    }
+
 
     @Override
     public int compareTo(Edge o) {
