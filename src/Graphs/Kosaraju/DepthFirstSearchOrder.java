@@ -22,14 +22,15 @@ public class DepthFirstSearchOrder
     {
         vertex.setVisited(true);
 
-        for(Vertex v:vertex.getAdjacencies()){
+        for(Vertex v:vertex.getAdjacencies())
+        {
             if(!v.isVisited()){
                 dfs(v);
             }
         }
         stack.push(vertex);
     }
-    public Stack<Vertex> getReversePost(){
+    public Stack<Vertex> getStackReverse(){
         return this.stack;
     }
 }

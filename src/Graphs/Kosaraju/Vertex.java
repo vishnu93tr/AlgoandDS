@@ -5,22 +5,32 @@ import java.util.List;
 
 public class Vertex
 {
-    private int id;
-    private String name;
-    private boolean visited;
+    private String name;//name of vertex
+    private int id;//id for vertex
+    private int componentid;//component id for scc
+    private boolean visited;//check whether vertex is visited or not
     private List<Vertex> adjacencies;
-    private int componentid; //for scc
 
     public Vertex(int id,String name){
         this.id=id;
         this.name=name;
         this.adjacencies=new ArrayList<>();
     }
-    public String toString(){
+    public void addNeighbours(Vertex vertex){
+        this.adjacencies.add(vertex);
+    }
+
+    @Override
+    public String toString() {
         return this.name;
     }
-    public void addNeighbour(Vertex vertex){
-        this.adjacencies.add(vertex);
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId() {
@@ -31,12 +41,12 @@ public class Vertex
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getComponentid() {
+        return componentid;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setComponentid(int componentid) {
+        this.componentid = componentid;
     }
 
     public boolean isVisited() {
@@ -53,13 +63,5 @@ public class Vertex
 
     public void setAdjacencies(List<Vertex> adjacencies) {
         this.adjacencies = adjacencies;
-    }
-
-    public int getComponentid() {
-        return componentid;
-    }
-
-    public void setComponentid(int componentid) {
-        this.componentid = componentid;
     }
 }

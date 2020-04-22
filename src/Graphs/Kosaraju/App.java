@@ -5,8 +5,8 @@ import java.util.List;
 
 public class App
 {
-    public static void main(String[] args) {
-
+    public static void main(String[] args)
+    {
         List<Vertex> vertexList = new ArrayList<>();
 
         vertexList.add(new Vertex(0, "a"));
@@ -45,7 +45,7 @@ public class App
 
 
 
-        Graph graph = new Graph(vertexList,edgeList);
+        Graph graph = new Graph(edgeList, vertexList);
 
 
         Algorithm kosarajuAlgorithm = new Algorithm(graph);
@@ -55,6 +55,5 @@ public class App
         for(Vertex vertex : vertexList){
             System.out.println(vertex+" - "+vertex.getComponentid());
         }
-
     }
 }
