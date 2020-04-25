@@ -31,10 +31,10 @@ public class App
 
         FordFulkerson fordFulkerson = new FordFulkerson(flowNetwork, vertex0, vertex3);
 
-        System.out.println("Maximum flow is: " + fordFulkerson.getMax_flow());
+        System.out.println("Maximum flow is: " + fordFulkerson.getMaxFlow());
+
 
 
 
     }
-    }
-
+}

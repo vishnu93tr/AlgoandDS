@@ -6,14 +6,15 @@ public class Vertex
     private String name;
     private boolean visited;
 
-    public Vertex(int id,String name){
+    public Vertex(int id,String name)
+    {
         this.id=id;
         this.name=name;
     }
 
     @Override
     public String toString() {
-        return this.id+"-"+this.name;
+        return this.id+""+this.name;
     }
 
     public int getId() {
@@ -39,4 +40,5 @@ public class Vertex
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
+
 }
