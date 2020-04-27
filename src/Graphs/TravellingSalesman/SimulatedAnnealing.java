@@ -1,9 +1,10 @@
 package Graphs.TravellingSalesman;
 
+import java.util.List;
+
 public class SimulatedAnnealing
 {
     private SingleTour best;
-
     public void Simulation()
     {
         double temperature = 10000;
@@ -32,7 +33,7 @@ public class SimulatedAnnealing
             double currentEnergy = currentSolution.getDistance();
             double neighbourEnergy = newSolution.getDistance();
 
-            if (acceptanceProbability(currentEnergy, neighbourEnergy, temperature) > Math.random()) {
+            if (AcceptanceProbability(currentEnergy, neighbourEnergy, temperature) > Math.random()) {
                 currentSolution = new SingleTour(newSolution.getTour());
             }
 
@@ -43,15 +44,12 @@ public class SimulatedAnnealing
             temperature *= 1 - coolingRate;
         }
     }
-    public SingleTour getBest()
-    {
-        return this.best;
+    public SingleTour getBest(){
+        return best;
     }
 
-    private double acceptanceProbability(double currentEnergy, double newEnergy, double temperature)
+    private double AcceptanceProbability(double newEnergy, double currentEnergy, double temperature)
     {
-        if(newEnergy<currentEnergy) return 1;
-
-        return (Math.exp(currentEnergy-newEnergy)/temperature);
+        return newEnergy<currentEnergy?1:Math.exp((newEnergy-currentEnergy)/temperature);
     }
 }

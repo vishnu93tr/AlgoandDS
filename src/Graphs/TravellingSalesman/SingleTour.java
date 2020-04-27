@@ -10,7 +10,7 @@ public class SingleTour
     private int distance = 0;
 
     public SingleTour() {
-        for (int i = 0; i < Repository.numberOfCities(); i++) {
+        for (int i = 0; i < Repository.getnumberofCities(); i++) {
             tour.add(null);
         }
     }
@@ -32,7 +32,7 @@ public class SingleTour
     }
 
     public void generateIndividual() {
-        for (int cityIndex = 0; cityIndex < Repository.numberOfCities(); cityIndex++) {
+        for (int cityIndex = 0; cityIndex < Repository.getnumberofCities(); cityIndex++) {
             setCity(cityIndex, Repository.getCity(cityIndex));
         }
 
@@ -40,7 +40,7 @@ public class SingleTour
     }
 
     public City getCity(int tourPosition) {
-        return (City) tour.get(tourPosition);
+        return tour.get(tourPosition);
     }
 
     public void setCity(int tourPosition, City city) {
@@ -55,14 +55,7 @@ public class SingleTour
             for (int cityIndex = 0; cityIndex < tourSize(); cityIndex++) {
 
                 City fromCity = getCity(cityIndex);
-                City destinationCity;
-
-                if (cityIndex + 1 < tourSize()) {
-                    destinationCity = getCity(cityIndex + 1);
-                } else {
-                    destinationCity = getCity(0);
-                }
-
+                City destinationCity=(cityIndex+1<tourSize())?getCity(cityIndex+1):getCity(0);
                 tourDistance += fromCity.distanceTo(destinationCity);
             }
             distance = tourDistance;

@@ -5,44 +5,27 @@ public class City
     private int x;
     private int y;
 
-    public City() {
-        this.x = (int) (Math.random() * 10);
-        this.y = (int) (Math.random() * 10);
-    }
-
-    public City(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public City()
+    {
+        //constructor must have capability to have a random value of x and y
+        this.x= (int) (Math.random()*100);
+        this.y=(int)(Math.random()*100);
     }
 
     public int getX() {
-        return this.x;
+        return x;
     }
 
     public int getY() {
-        return this.y;
+        return y;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
+    //method to calculate distance from one city to another
+    public double distanceTo(City city)
+    {
+        double xdistance=getX()-city.getX();
+        double ydistance=getY()-city.getY();
 
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public double distanceTo(City city) {
-
-        int xDistance = Math.abs(getX() - city.getX());
-        int yDistance = Math.abs(getY() - city.getY());
-
-        double distance = Math.sqrt((xDistance * xDistance) + (yDistance * yDistance));
-
-        return distance;
-    }
-
-    @Override
-    public String toString() {
-        return x + "-" + y;
+        return Math.sqrt(Math.pow(xdistance,2)+Math.pow(ydistance,2));
     }
 }

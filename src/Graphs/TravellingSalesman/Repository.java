@@ -5,17 +5,16 @@ import java.util.List;
 
 public class Repository
 {
-    private static List<City> destinationCities = new ArrayList<>();
+    //contains list of cities
+    private static List<City>  cityList=new ArrayList<>();
 
-    public static void addCity(City city) {
-        destinationCities.add(city);
+    public static void addCity(City city){
+        cityList.add(city);
     }
-
     public static City getCity(int index){
-        return (City)destinationCities.get(index);
+       return cityList.get(index);
     }
-
-    public static int numberOfCities(){
-        return destinationCities.size();
+    public static int getnumberofCities(){
+        return cityList.size();
     }
 }
